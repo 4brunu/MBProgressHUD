@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'MBProgressHUD' target in the 'MBProgressHUD' project
+// Prefix header for all source files of the 'MOProgressHUD' target in the 'MOProgressHUD' project
 //
 
 #import <Availability.h>
