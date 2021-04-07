@@ -254,7 +254,7 @@ NS_ASSUME_NONNULL_BEGIN
  * When enabled, the bezel center gets slightly affected by the device accelerometer data.
  * Defaults to NO.
  *
- * @note This can cause main thread checker assertions on certain devices. https://github.com/jdg/MOProgressHUD/issues/552
+ * @note This can cause main thread checker assertions on certain devices. https://github.com/jdg/MBProgressHUD/issues/552
  */
 @property (assign, nonatomic, getter=areDefaultMotionEffectsEnabled) BOOL defaultMotionEffectsEnabled UI_APPEARANCE_SELECTOR;
 

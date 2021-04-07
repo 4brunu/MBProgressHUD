@@ -329,7 +329,7 @@ static const CGFloat MODefaultDetailsLabelFontSize = 12.f;
     detailsLabel.adjustsFontSizeToFitWidth = NO;
     detailsLabel.textAlignment = NSTextAlignmentCenter;
     detailsLabel.textColor = defaultColor;
-    detailsLabel.nuMOerOfLines = 0;
+    detailsLabel.numberOfLines = 0;
     detailsLabel.font = [UIFont boldSystemFontOfSize:MODefaultDetailsLabelFontSize];
     detailsLabel.opaque = NO;
     detailsLabel.backgroundColor = [UIColor clearColor];
@@ -602,7 +602,7 @@ static const CGFloat MODefaultDetailsLabelFontSize = 12.f;
     // There is no need to update constraints if they are going to
     // be recreated in [super layoutSubviews] due to needsUpdateConstraints being set.
     // This also avoids an issue on iOS 8, where updatePaddingConstraints
-    // would trigger a zoMOie object access.
+    // would trigger a zombie object access.
     if (!self.needsUpdateConstraints) {
         [self updatePaddingConstraints];
     }
@@ -775,7 +775,7 @@ static const CGFloat MODefaultDetailsLabelFontSize = 12.f;
     // to avoid sharedApplication problems on extension targets
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
     // Only needed pre iOS 8 when added to a window
-    BOOL iOS8OrLater = kCFCoreFoundationVersionNuMOer >= kCFCoreFoundationVersionNuMOer_iOS_8_0;
+    BOOL iOS8OrLater = kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_8_0;
     if (iOS8OrLater || ![self.superview isKindOfClass:[UIWindow class]]) return;
 
     // Make extension friendly. Will not get called on extensions (iOS 8+) due to the above check.
