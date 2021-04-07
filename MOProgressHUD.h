@@ -1,5 +1,5 @@
 //
-//  MBProgressHUD.h
+//  MOProgressHUD.h
 //  Version 1.2.0
 //  Created by Matej Bukovinski on 2.4.09.
 //
@@ -30,46 +30,46 @@
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-@class MBBackgroundView;
-@protocol MBProgressHUDDelegate;
+@class MOBackgroundView;
+@protocol MOProgressHUDDelegate;
 
 
-extern CGFloat const MBProgressMaxOffset;
+extern CGFloat const MOProgressMaxOffset;
 
-typedef NS_ENUM(NSInteger, MBProgressHUDMode) {
+typedef NS_ENUM(NSInteger, MOProgressHUDMode) {
     /// UIActivityIndicatorView.
-    MBProgressHUDModeIndeterminate,
+    MOProgressHUDModeIndeterminate,
     /// A round, pie-chart like, progress view.
-    MBProgressHUDModeDeterminate,
+    MOProgressHUDModeDeterminate,
     /// Horizontal progress bar.
-    MBProgressHUDModeDeterminateHorizontalBar,
+    MOProgressHUDModeDeterminateHorizontalBar,
     /// Ring-shaped progress view.
-    MBProgressHUDModeAnnularDeterminate,
+    MOProgressHUDModeAnnularDeterminate,
     /// Shows a custom view.
-    MBProgressHUDModeCustomView,
+    MOProgressHUDModeCustomView,
     /// Shows only labels.
-    MBProgressHUDModeText
+    MOProgressHUDModeText
 };
 
-typedef NS_ENUM(NSInteger, MBProgressHUDAnimation) {
+typedef NS_ENUM(NSInteger, MOProgressHUDAnimation) {
     /// Opacity animation
-    MBProgressHUDAnimationFade,
+    MOProgressHUDAnimationFade,
     /// Opacity + scale animation (zoom in when appearing zoom out when disappearing)
-    MBProgressHUDAnimationZoom,
+    MOProgressHUDAnimationZoom,
     /// Opacity + scale animation (zoom out style)
-    MBProgressHUDAnimationZoomOut,
+    MOProgressHUDAnimationZoomOut,
     /// Opacity + scale animation (zoom in style)
-    MBProgressHUDAnimationZoomIn
+    MOProgressHUDAnimationZoomIn
 };
 
-typedef NS_ENUM(NSInteger, MBProgressHUDBackgroundStyle) {
+typedef NS_ENUM(NSInteger, MOProgressHUDBackgroundStyle) {
     /// Solid color background
-    MBProgressHUDBackgroundStyleSolidColor,
+    MOProgressHUDBackgroundStyleSolidColor,
     /// UIVisualEffectView or UIToolbar.layer background view
-    MBProgressHUDBackgroundStyleBlur
+    MOProgressHUDBackgroundStyleBlur
 };
 
-typedef void (^MBProgressHUDCompletionBlock)(void);
+typedef void (^MOProgressHUDCompletionBlock)(void);
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -79,13 +79,13 @@ NS_ASSUME_NONNULL_BEGIN
  * Displays a simple HUD window containing a progress indicator and two optional labels for short messages.
  *
  * This is a simple drop-in class for displaying a progress HUD view similar to Apple's private UIProgressHUD class.
- * The MBProgressHUD window spans over the entire space given to it by the initWithFrame: constructor and catches all
+ * The MOProgressHUD window spans over the entire space given to it by the initWithFrame: constructor and catches all
  * user input on this region, thereby preventing the user operations on components below the view.
  *
  * @note To still allow touches to pass through the HUD, you can set hud.userInteractionEnabled = NO.
- * @attention MBProgressHUD is a UI class and should therefore only be accessed on the main thread.
+ * @attention MOProgressHUD is a UI class and should therefore only be accessed on the main thread.
  */
-@interface MBProgressHUD : UIView
+@interface MOProgressHUD : UIView
 
 /**
  * Creates a new HUD, adds it to provided view and shows it. The counterpart to this method is hideHUDForView:animated:.
@@ -125,7 +125,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param view The view that is going to be searched.
  * @return A reference to the last HUD subview discovered.
  */
-+ (nullable MBProgressHUD *)HUDForView:(UIView *)view NS_SWIFT_NAME(forView(_:));
++ (nullable MOProgressHUD *)HUDForView:(UIView *)view NS_SWIFT_NAME(forView(_:));
 
 /**
  * A convenience constructor that initializes the HUD with the view's bounds. Calls the designated constructor with
@@ -176,12 +176,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * The HUD delegate object. Receives HUD state notifications.
  */
-@property (weak, nonatomic) id<MBProgressHUDDelegate> delegate;
+@property (weak, nonatomic) id<MOProgressHUDDelegate> delegate;
 
 /**
  * Called after the HUD is hidden.
  */
-@property (copy, nullable) MBProgressHUDCompletionBlock completionBlock;
+@property (copy, nullable) MOProgressHUDCompletionBlock completionBlock;
 
 /**
  * Grace period is the time (in seconds) that the invoked method may be run without
@@ -210,9 +210,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @name Appearance
 
 /**
- * MBProgressHUD operation mode. The default is MBProgressHUDModeIndeterminate.
+ * MOProgressHUD operation mode. The default is MOProgressHUDModeIndeterminate.
  */
-@property (assign, nonatomic) MBProgressHUDMode mode;
+@property (assign, nonatomic) MOProgressHUDMode mode;
 
 /**
  * A color that gets forwarded to all labels and supported indicators. Also sets the tintColor
@@ -224,12 +224,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * The animation type that should be used when the HUD is shown and hidden.
  */
-@property (assign, nonatomic) MBProgressHUDAnimation animationType UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) MOProgressHUDAnimation animationType UI_APPEARANCE_SELECTOR;
 
 /**
- * The bezel offset relative to the center of the view. You can use MBProgressMaxOffset
- * and -MBProgressMaxOffset to move the HUD all the way to the screen edge in each direction.
- * E.g., CGPointMake(0.f, MBProgressMaxOffset) would position the HUD centered on the bottom edge.
+ * The bezel offset relative to the center of the view. You can use MOProgressMaxOffset
+ * and -MOProgressMaxOffset to move the HUD all the way to the screen edge in each direction.
+ * E.g., CGPointMake(0.f, MOProgressMaxOffset) would position the HUD centered on the bottom edge.
  */
 @property (assign, nonatomic) CGPoint offset UI_APPEARANCE_SELECTOR;
 
@@ -254,7 +254,7 @@ NS_ASSUME_NONNULL_BEGIN
  * When enabled, the bezel center gets slightly affected by the device accelerometer data.
  * Defaults to NO.
  *
- * @note This can cause main thread checker assertions on certain devices. https://github.com/jdg/MBProgressHUD/issues/552
+ * @note This can cause main thread checker assertions on certain devices. https://github.com/jdg/MOProgressHUD/issues/552
  */
 @property (assign, nonatomic, getter=areDefaultMotionEffectsEnabled) BOOL defaultMotionEffectsEnabled UI_APPEARANCE_SELECTOR;
 
@@ -277,15 +277,15 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * The view containing the labels and indicator (or customView).
  */
-@property (strong, nonatomic, readonly) MBBackgroundView *bezelView;
+@property (strong, nonatomic, readonly) MOBackgroundView *bezelView;
 
 /**
  * View covering the entire HUD area, placed behind bezelView.
  */
-@property (strong, nonatomic, readonly) MBBackgroundView *backgroundView;
+@property (strong, nonatomic, readonly) MOBackgroundView *backgroundView;
 
 /**
- * The UIView (e.g., a UIImageView) to be shown when the HUD is in MBProgressHUDModeCustomView.
+ * The UIView (e.g., a UIImageView) to be shown when the HUD is in MOProgressHUDModeCustomView.
  * The view should implement intrinsicContentSize for proper sizing. For best results use approximately 37 by 37 pixels.
  */
 @property (strong, nonatomic, nullable) UIView *customView;
@@ -309,14 +309,14 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@protocol MBProgressHUDDelegate <NSObject>
+@protocol MOProgressHUDDelegate <NSObject>
 
 @optional
 
 /**
  * Called after the HUD was fully hidden from the screen.
  */
-- (void)hudWasHidden:(MBProgressHUD *)hud;
+- (void)hudWasHidden:(MOProgressHUD *)hud;
 
 @end
 
@@ -324,7 +324,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * A progress view for showing definite progress by filling up a circle (pie chart).
  */
-@interface MBRoundProgressView : UIView
+@interface MORoundProgressView : UIView
 
 /**
  * Progress (0.0 to 1.0)
@@ -355,7 +355,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * A flat bar progress view.
  */
-@interface MBBarProgressView : UIView
+@interface MOBarProgressView : UIView
 
 /**
  * Progress (0.0 to 1.0)
@@ -383,16 +383,16 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface MBBackgroundView : UIView
+@interface MOBackgroundView : UIView
 
 /**
  * The background style.
- * Defaults to MBProgressHUDBackgroundStyleBlur.
+ * Defaults to MOProgressHUDBackgroundStyleBlur.
  */
-@property (nonatomic) MBProgressHUDBackgroundStyle style;
+@property (nonatomic) MOProgressHUDBackgroundStyle style;
 
 /**
- * The blur effect style, when using MBProgressHUDBackgroundStyleBlur.
+ * The blur effect style, when using MOProgressHUDBackgroundStyleBlur.
  * Defaults to UIBlurEffectStyleLight.
  */
 @property (nonatomic) UIBlurEffectStyle blurEffectStyle;

@@ -2,17 +2,17 @@
 import PackageDescription
 
 let package = Package(
-    name: "MBProgressHUD",
+    name: "MOProgressHUD",
     products: [
-        .library(name: "MBProgressHUD", targets: ["MBProgressHUD"])
+        .library(name: "MOProgressHUD", targets: ["MOProgressHUD"])
     ],
     targets: [
         .target(
-            name: "MBProgressHUD",
+            name: "MOProgressHUD",
             dependencies: [],
             path: ".",
             exclude: ["Demo"],
-            sources: ["MBProgressHUD.h", "MBProgressHUD.m"],
+            sources: ["MOProgressHUD.h", "MOProgressHUD.m"],
             publicHeadersPath: "include"
         )
     ]
